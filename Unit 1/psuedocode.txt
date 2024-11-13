@@ -1,0 +1,42 @@
+function Dijkstra(Graph, source):
+  for each vertex v in Graph:
+    distance[v] = infinity
+    
+ distance[source] = 0
+ G = the set of all nodes of the Graph
+ 
+ while G is non-empty:
+     Q = node in G with the least dist[ ]
+     mark Q visited
+     for each neighbor N of Q:
+         alt_dist = distance[Q] + dist_between(Q, N)
+         if alt-dist < distance[N]
+             distance[N] := alt_dist
+             
+ return distance[ ]
+
+
+BellmanFord(Edges[][], src, V): 
+    dis[] = new int[V]
+ 
+    For i = 1 to V :
+        dis[i] = INF     // (INF=Very Large Value)
+
+    dis[src] = 0
+    For i = 1 to V-1 :
+        For j 1 to Edges.length:
+        u = Edges[j][0]
+        v = Edges[j][1]
+        wt = Edges[j][2]
+        dis[v] = MIN(dis[u]+wt,dis[v])
+
+    For i = 1 to Edges.length:
+        u = Edges[i][0]
+        v = Edges[i][1]
+        wt = Edges[i][2]
+        If(dis[v] > dis[u]+wt)
+            Print "Negative Weight cycle exists."
+
+    Return dis
+
+
