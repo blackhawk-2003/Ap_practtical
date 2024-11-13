@@ -417,3 +417,110 @@ public class Main {
     }
 }
 
+
+
+
+
+
+
+
+singly linked list
+
+
+
+
+Node:
+    data
+    next
+
+SinglyLinkedList:
+    head
+
+    Method: insert(value)
+        newNode = Node(value)
+        if head is null:
+            head = newNode
+        else:
+            current = head
+            while current.next is not null:
+                current = current.next
+            current.next = newNode
+
+    Method: delete(value)
+        if head is null:
+            return
+        if head.data == value:
+            head = head.next
+            return
+        current = head
+        while current.next is not null:
+            if current.next.data == value:
+                current.next = current.next.next
+                return
+            current = current.next
+
+    Method: search(value)
+        current = head
+        while current is not null:
+            if current.data == value:
+                return true
+            current = current.next
+        return false
+
+
+
+
+
+Doubly linked list 
+
+
+
+
+
+
+Node:
+    data
+    next
+    prev
+
+DoublyLinkedList:
+    head
+    tail
+
+    Method: insert(value)
+        newNode = Node(value)
+        if head is null:
+            head = tail = newNode
+        else:
+            tail.next = newNode
+            newNode.prev = tail
+            tail = newNode
+
+    Method: delete(value)
+        if head is null:
+            return
+        if head.data == value:
+            head = head.next
+            if head is not null:
+                head.prev = null
+            else:
+                tail = null
+            return
+        current = head
+        while current is not null:
+            if current.data == value:
+                if current.next is not null:
+                    current.next.prev = current.prev
+                else:
+                    tail = current.prev
+                current.prev.next = current.next
+                return
+            current = current.next
+
+    Method: search(value)
+        current = head
+        while current is not null:
+            if current.data == value:
+                return true
+            current = current.next
+        return false
